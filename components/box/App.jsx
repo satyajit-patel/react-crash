@@ -1,15 +1,7 @@
 import React from 'react'
 import './App.css'
 
-const App = () => {
-  return (
-    <div>
-      <h1>Hello World</h1>
-    </div>
-  )
-}
-
-export const Box = () => {
+const Box = () => {
   return (
     <div>
       <div className="box-container">
@@ -30,6 +22,6 @@ export const Box = () => {
   )
 }
 
-export default App
+export default Box
 
 
