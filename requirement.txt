@@ -8,3 +8,5 @@ terminologies:
     Component - reusable code
     JSX - dynamic page
     Hooks - using of State(data) and other React features
+
+npm install react-icons (Fa - font awesome)
