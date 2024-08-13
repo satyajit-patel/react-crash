@@ -3,7 +3,7 @@ import React from 'react'
 const Card = ({name, desc="nothing to say so far"}) => {
   return (
     
-    <div className="relative h-[400px] w-[300px] rounded-md">
+    <div className="relative h-[400px] w-[300px] rounded-md mb-4">
       <img
         src="https://i.pinimg.com/originals/a4/f5/c4/a4f5c420465ce8568e007f056828d48e.jpg"
         alt="AirMax Pro"
