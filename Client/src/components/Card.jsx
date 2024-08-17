@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Card = ({name, desc="nothing to say so far"}) => {
+const Card = ({name="Joker", quote="Why so serious", link='#'}) => {
   return (
     
     <div className="relative h-[400px] w-[300px] rounded-md mb-4">
@@ -13,11 +13,13 @@ const Card = ({name, desc="nothing to say so far"}) => {
       <div className="absolute bottom-4 left-4 text-left">
         <h1 className="text-lg font-semibold text-white">{name}</h1>
         <p className="mt-2 text-sm text-gray-300">
-          {desc}
+          {quote}
         </p>
-        <button className="mt-2 inline-flex cursor-pointer items-center text-sm font-semibold text-white">
-          View Profile &rarr;
-        </button>
+        <a href={link} target="_blank" rel="noopener noreferrer">
+          <button className="mt-2 inline-flex cursor-pointer items-center text-sm font-semibold text-white">
+            View Profile &rarr;
+          </button>
+        </a>
       </div>
     </div>
 
