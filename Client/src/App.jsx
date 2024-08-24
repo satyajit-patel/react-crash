@@ -1,49 +1,31 @@
-import React, { useEffect, useState } from 'react'
-import Card from './components/Card'
-import getQuote from './components/api/getQuote'
+import React, { useState, useEffect } from 'react';
+import FlashcardList from './components/FlashcardList';
+import AdminDashboard from './components/AdminDashboard';
+import { fetchFlashcards } from './apis/Api';
+import Card from "./components/Card";
+import './styles.css';
+import {BrowserRouter as Router, Routes, Route, Navigate} from "react-router-dom";
 
-const App = () => {
-  const [quoteList, setQuoteList] = useState([]);
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await getQuote();
-      if(result) {
-        setQuoteList(result);
-      }
-    }
+function App() {
+    const [flashcards, setFlashcards] = useState([]);
 
-    fetchData();
-  }, []);
-
-  return (
-    <div>
-      <div className='flex flex-wrap justify-center gap-1'>
-        {/* { // The curly braces open's the JavaScript space
-          (quoteList.length > 0) ? 
-            quoteList.map((it, index) => {
-              const profileLink = `https://www.google.co.in/${it.name}`;
-              return (<Card key={index} name={it.name} quote={it.quote} link={profileLink} />);
-            }) :
-            (<h1 className='text-center bg-red-500 text-xl'>No Data Found</h1>)
-        } */}
-        {quoteList.length > 0 ? 
-          quoteList.map((it, index) => {
-            const profileLink = `https://www.${it.name}-wikipedia/google.com`;
-            return (
-              <Card 
-                key={index} 
-                name={it.name} 
-                quote={it.quote} 
-                link={profileLink} 
-              />
-            );
-          }) : (
-            <h1 className='text-center bg-red-500 text-xl'>No Data Found</h1>
-          )
+    useEffect(() => {
+        async function getFlashcards() {
+            const data = await fetchFlashcards();
+            setFlashcards(data);
         }
-      </div>
-    </div>
-  )
+        getFlashcards();
+    }, []);
+
+    return (
+        <Router>
+            <Routes>
+                <Route path='/' element={<Navigate to="/FlashcardList" />} />
+                <Route path='/FlashcardList' element={<FlashcardList arr={flashcards} />} />
+                <Route path='/AdminDashboard' element={<AdminDashboard setFlashcards={setFlashcards} />} />
+            </Routes>
+        </Router>
+    );
 }
 
-export default App
+export default App;
