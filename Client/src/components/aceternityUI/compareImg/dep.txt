@@ -1,0 +1,2 @@
+npm i framer-motion clsx tailwind-merge
+npm i @tsparticles/react @tsparticles/engine @tsparticles/slim
