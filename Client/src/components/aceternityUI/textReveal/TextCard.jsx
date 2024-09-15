@@ -5,18 +5,17 @@ import {
   TextRevealCardTitle,
 } from "./text-reveal-card";
 
-export const TextCard = () => {
+export const TextCard = ({it}) => {
   return (
     
     <div
-      className="flex items-center justify-center bg-[#0E0E10] h-[40rem] rounded-2xl w-full">
-      <TextRevealCard text="You know the business" revealText="I know nothing ">
+      className="flex items-center justify-center bg-[#0E0E10] h-[20rem] rounded-2xl w-[35rem]">
+      <TextRevealCard text="You know the business" revealText={it.author}>
         <TextRevealCardTitle>
-          Sometimes, you just need to see it.
+          {it.quote}
         </TextRevealCardTitle>
         <TextRevealCardDescription>
-          This is a text reveal card. Hover over the card to reveal the hidden
-          text.
+          Hover over the card to reveal the Author.
         </TextRevealCardDescription>
       </TextRevealCard>
     </div>
