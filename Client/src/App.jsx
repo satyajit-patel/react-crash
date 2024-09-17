@@ -1,49 +1,40 @@
-import { createContext, useState } from 'react';
-import NewApp from './NewApp';
+import React from 'react'
+import Home from './components/Home';
+import Nav from './components/Nav';
+import About from './components/About';
+import Dashboard from './components/Dashboard';
 
-// create the context
-// wrap with provider
-// use the context
-const ImranKhan = createContext();
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <div>
+      <Nav />
+      <Home />
+    </div> 
+  },
+  {
+    path: "/About",
+    element: <div>
+      <Nav />
+      <About />
+    </div> 
+  },
+  {
+    path: "/Dashboard",
+    element: <div>
+      <Nav />
+      <Dashboard />
+    </div> 
+  }
+]);
 
-function App() {
-  const data = [
-    {
-      quote: "The only constant is change.",
-      author: "Heraclitus"
-    },
-    {
-      quote: "I know that I know nothing.",
-      author: "Socrates"
-    },
-    {
-      quote: "Less is more.",
-      author: "Ludwig Mies van der Rohe"
-    },
-    {
-      quote: "To lead the people, walk behind them.",
-      author: "Lao Tzu"
-    },
-    {
-      quote: "The more you learn, the less you know.",
-      author: "Socrates"
-    },
-    {
-      quote: "The pursuit of happiness is the source of unhappiness.",
-      author: "Blaise Pascal"
-    }
-  ];
-
-  const [x, setX] = useState({nums: data});
-
+const App = () => {
   return (
     <div>
-      <ImranKhan.Provider value={{x, setX}}>
-        <NewApp />
-      </ImranKhan.Provider>
+      <RouterProvider router={router}/>
     </div>
-  );
+  )
 }
 
-export default App;
-export {ImranKhan};
+export default App
